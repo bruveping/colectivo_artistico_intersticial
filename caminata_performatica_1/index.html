@@ -29,6 +29,40 @@
       line-height: 1.6;
       margin-bottom: 1.5em;
     }
+    .ciberpunk-btn {
+	display: inline-block;
+	padding: 1em 2em;
+	margin: 2em auto;
+	font-family: "Courier New", monospace;
+	font-size: 1.1em;
+	color: #00ffcc;
+	background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+	border: 2px solid #ff00cc;
+	text-shadow: 0 0 5px #00ffcc;
+	box-shadow: 0 0 15px #ff00cc, inset 0 0 10px #00ffcc;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 8px;
+	position: relative;
+    }
+
+    .ciberpunk-btn:hover {
+	background-color: #1a1a1a;
+	color: #ff00cc;
+	box-shadow: 0 0 25px #ff00cc, inset 0 0 15px #00ffcc;
+	animation: glitch 0.3s linear infinite;
+    }
+
+    @keyframes glitch {
+	0% { transform: translate(0); }
+	25% { transform: translate(-1px, 1px); }
+	50% { transform: translate(1px, -1px); }
+	75% { transform: translate(-1px, -1px); }
+	100% { transform: translate(1px, 1px); }
+    }
+
   </style>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -54,6 +88,8 @@
   <p>
     La caminata performática por diagonales se configura así como una práctica de re-significación del espacio urbano, donde el desplazamiento colectivo se convierte en una herramienta de lectura crítica, inscripción técnica y activación relacional del territorio.
   </p>
+	<a href ="caminata_performatica_1_live.html" class="ciberpunk-btn">
+	➤ activar recorrido con GPS	  </a>
 
   <iframe src="caminata_performativa.html"></iframe>
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Caminata performática en vivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  <style>
+    #map { height: 100vh; margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script>
+    // Esperar a que Leaflet cargue completamente
+    window.addEventListener('load', function() {
+      const map = L.map('map').setView([-34.6092, -58.3733], 15);
+      const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      });
+      tileLayer.addTo(map);
+      
+      // 📍 Recorrido performático con nodos
+      const ruta = [
+        [-34.61260199275987, -58.37704035453373],
+        [-34.609207589366044, -58.37332839423252],
+        [-34.60872192057563, -58.373070902182754],
+        [-34.60818326641266, -58.37303871567653],
+        [-34.60780355727982, -58.373339123067936],
+        [-34.603941296377755, -58.38075418485458]
+      ];
+      
+      const recorrido = L.polyline(ruta, { color: 'blue' }).addTo(map);
+      map.fitBounds(recorrido.getBounds());
+      
+      // 🧩 Agregar nodos numerados
+      ruta.forEach((coord, index) => {
+        L.marker(coord, {
+          title: `Nodo ${index + 1}`,
+          icon: L.divIcon({
+            className: 'custom-node',
+            html: `<div style="background:#fff;border:2px solid #000;border-radius:50%;padding:4px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:bold;">${index + 1}</div>`,
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          })
+        }).addTo(map);
+      });
+      
+      // Variables para mantener un solo marcador de ubicación
+      let marcadorUsuario = null;
+      let primeraLocalizacion = true;
+      
+      // 🧭 Geolocalización en tiempo real
+      map.locate({ setView: false, watch: true, maxZoom: 16, enableHighAccuracy: true });
+      
+      map.on('locationfound', (e) => {
+        const iconoUsuario = L.icon({
+          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+          shadowSize: [41, 41]
+        });
+        
+        // Si es la primera vez, centrar el mapa
+        if (primeraLocalizacion) {
+          map.setView(e.latlng, 16);
+          primeraLocalizacion = false;
+        }
+        
+        // Actualizar o crear marcador
+        if (marcadorUsuario) {
+          marcadorUsuario.setLatLng(e.latlng);
+        } else {
+          marcadorUsuario = L.marker(e.latlng, { icon: iconoUsuario }).addTo(map)
+            .bindPopup("📍 Estás acá");
+        }
+      });
+      
+      map.on('locationerror', (e) => {
+        alert("No se pudo obtener tu ubicación: " + e.message);
+      });
+    });
+  </script>
+</body>
+</html>
