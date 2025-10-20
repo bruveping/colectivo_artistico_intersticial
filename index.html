@@ -7,84 +7,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000000;
-      font-family: 'Oswald', sans-serif;
-      color: #ff00cc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
+   
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: 'Oswald', sans-serif;
+  color: #ff00cc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-    /* Logo CAI arriba, tenue */
-    .logo-top {
-      font-size: 10rem;
-      color: #ff00cc;
-      opacity: 0.2;
-      margin-top: 40px;
-      margin-bottom: 0;
-      pointer-events: none;
-      user-select: none;
-      font-family: 'Oswald', sans-serif;
-      letter-spacing: 0.1em;
-      line-height: 1;
-      z-index: 1;
-    }
+.logo-top {
+  font-size: 6rem; /* más chico para móviles */
+  opacity: 0.2;
+  margin-top: 20px;
+  margin-bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
 
-    .hero {
-      text-align: center;
-      padding: 40px 20px;
-      z-index: 2;
-    }
+.hero {
+  text-align: center;
+  padding: 20px;
+  max-width: 90%;
+}
 
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: #ff00cc;
-      text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
-      letter-spacing: 0.05em;
-    }
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff00cc;
+}
 
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      font-family: 'Roboto Mono', monospace;
-      line-height: 1.6;
-      color: #f0f0f0;
-      text-shadow: 0 0 5px #ff00cc;
-    }
+.hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+  text-shadow: 0 0 5px #ff00cc;
+}
 
-    .link-container {
-      margin-top: 50px;
-    }
+.link-container {
+  margin-top: 30px;
+}
 
-    .interstitial-link {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #ff00cc;
-      background-color: transparent;
-      border: 2px solid #ff00cc;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 10px #ff00cc;
-      text-shadow: 0 0 5px #ff00cc;
-      transition: all 0.3s ease;
-    }
+.interstitial-link {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff00cc;
+  border: 2px solid #ff00cc;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff00cc;
+  transition: all 0.3s ease;
+}
 
-    .interstitial-link:hover {
-      background-color: #ff00cc;
-      color: #000000;
-      box-shadow: 0 0 20px #ff00cc;
-    }
+.interstitial-link:hover {
+  background-color: #ff00cc;
+  color: #000;
+  box-shadow: 0 0 20px #ff00cc;
+}
+
   </style>
 </head>
 <body>
